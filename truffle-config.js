@@ -1,7 +1,7 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider'); //Lembre-se de instalar essa biblioteca para deploiar os contratos nas redes remotas (Mainnet, Rinkeby, Ropsten, Goerli, etc)
 
 
-const dotenv = require("dotenv")
+const dotenv = require("dotenv") //npm install dotenv
 dotenv.config()
 
  //Leitura da frase secreta contida no arquivo .secret
