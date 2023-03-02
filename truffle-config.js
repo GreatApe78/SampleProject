@@ -3,6 +3,8 @@ const DOTENV = require("dotenv");
 DOTENV.config();
 
 
+
+ //Leitura da frase secreta contida no arquivo .secret
 //const infuraKey = process.env.infuraKey
 //const mnemonic = process.env.mnemonic
 const MNEMONIC = process.env._mnemonic;
