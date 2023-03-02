@@ -1,15 +1,14 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider'); //Lembre-se de instalar essa biblioteca para deploiar os contratos nas redes remotas (Mainnet, Rinkeby, Ropsten, Goerli, etc)
+const DOTENV = require("dotenv");
+DOTENV.config();
 
 
-const dotenv = require("dotenv")
-dotenv.config()
-
- //Leitura da frase secreta contida no arquivo .secret
 //const infuraKey = process.env.infuraKey
 //const mnemonic = process.env.mnemonic
-const mnemonic = process.env._mnemonic
-const infuraKey = process.env._infuraKey
-const binanceNetworkKey = process.env._binanceNetworkKey
+const MNEMONIC = process.env._mnemonic;
+const GOERLI_KEY = process.env._goerliKey;
+const BINANCE_KEY = process.env._binanceKey;
+const FANTOM_KEY = process.env._fantomKey
 module.exports = {
   networks: {
     development: { //Use esse nome se quiser deploiar no ganache pelo terminal. Para usar a interface grafica, use a porta 7545
@@ -18,16 +17,25 @@ module.exports = {
       network_id: "*",
     },
     goerli: { //Exemplo de rede de teste. Para usar outra rede, basta adiciona-la trocando o nome, o id da rede e a chave do infura correspondente
-      provider: () => new HDWalletProvider(mnemonic, infuraKey),
+      provider: () => new HDWalletProvider(MNEMONIC, GOERLI_KEY),
       network_id: 5,
       gas: 5500000,
       confirmations: 2,
       timeoutBlocks: 600,
       skipDryRun: true
     },
-    bscTestnet: {
-      provider: () => new HDWalletProvider(mnemonic, binanceNetworkKey),
+    binanceTestnet: {
+      provider: () => new HDWalletProvider(MNEMONIC, BINANCE_KEY),
       network_id: 97,
+      gas: 5500000,
+      confirmations: 2,
+      timeoutBlocks: 600,
+      skipDryRun: true
+    },
+
+    fantomTestnet: {
+      provider: () => new HDWalletProvider(MNEMONIC, FANTOM_KEY),
+      network_id: 4002,
       gas: 5500000,
       confirmations: 2,
       timeoutBlocks: 600,
